@@ -4,12 +4,12 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgbase=linux-vim3
-_commit=7a71769bb30dd83c0d6999a4eef8574a4eac2fce
+_commit=933225506ad9a19d5a944ecdd62d0bef1af4aae3
 _srcname=Amlogic_s905-kernel-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Kernel for Khadas Vim 3"
 pkgver=5.3.0
-pkgrel=0.4
+pkgrel=0.8
 arch=('aarch64')
 url="https://github.com/150balbes/Amlogic_s905-kernel/tree/master"
 license=('GPL2')
@@ -20,7 +20,7 @@ source=("https://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('6b936a8808fd0d2d53359c9433cbb7dc'
+md5sums=('7b1b0308ada4641658726d91a79501a1'
          'd87d7514fff5c2a31c4e6432fa517505'
          'fbb7f2695efe0c83265cad1c5e6f0a81'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
