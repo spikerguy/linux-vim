@@ -21,7 +21,7 @@ source=("https://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar
         '60-linux.hook'
         '90-linux.hook')
 md5sums=('7b1b0308ada4641658726d91a79501a1'
-         'd87d7514fff5c2a31c4e6432fa517505'
+         '3351aed1024be1b1aa20e3c1830e6812'
          'fbb7f2695efe0c83265cad1c5e6f0a81'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77')
