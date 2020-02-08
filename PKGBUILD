@@ -4,12 +4,12 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgbase=linux-vim3
-_commit=933225506ad9a19d5a944ecdd62d0bef1af4aae3
+_commit=597c549fd51aa44d335dcb9afa0f65028c3b5193
 _srcname=Amlogic_s905-kernel-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Kernel for Khadas Vim 3"
 pkgver=5.3.0
-pkgrel=0.8
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/150balbes/Amlogic_s905-kernel/tree/master"
 license=('GPL2')
@@ -19,17 +19,59 @@ source=("https://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar
         'config'
         'linux.preset'
         '60-linux.hook'
-        '90-linux.hook')
-md5sums=('7b1b0308ada4641658726d91a79501a1'
-         '3351aed1024be1b1aa20e3c1830e6812'
+        '90-linux.hook'
+        '0001-bootsplash.patch'
+        '0002-bootsplash.patch'
+        '0003-bootsplash.patch'
+        '0004-bootsplash.patch'
+        '0005-bootsplash.patch'
+        '0006-bootsplash.patch'
+        '0007-bootsplash.patch'
+        '0008-bootsplash.patch'
+        '0009-bootsplash.patch'
+        '0010-bootsplash.patch'
+        '0011-bootsplash.patch'
+        '0012-bootsplash.patch'
+        '0013-bootsplash.patch')
+md5sums=('fab5177aa6ccf1ca6a72843da1123d1e'
+         '217fb591939dbfeffad75b946b1f987d'
          'fbb7f2695efe0c83265cad1c5e6f0a81'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '3dc88030a8f2f5a5f97266d99b149f77')
+         '3dc88030a8f2f5a5f97266d99b149f77'
+         'f13cfcd8a4667ecca68bccefee4b8283'
+         'b4acd66a564af83b5409738c40b4a566'
+         'a6407dceae1838f5aa27450401a91be6'
+         'cb78b1c11b917a4d31c4b1567183b76f'
+         '3efea575da7f02ba94789d3b6b81e11f'
+         '2529ad13791b259d80c9d5d702187a65'
+         'efd2367798cc4eab0e15fc0ae44fb003'
+         '50255aac36e002afa477e4527a0550af'
+         '6b6def41b404422dc04b39e2f1adffc8'
+         '1922e3a7727d2bf51641b98d6d354738'
+         'd6b7e4e43e42128cf950251e0d0aee23'
+         'ecfd8a30c480149005fcf349e4d06f4b'
+         '2ead9aa2df230c83539e3ebf6b796b18')
 
 prepare() {
-sed -i s/'EXTRAVERSION = -rc6'/'EXTRAVERSION ='/ "${_srcname}"/Makefile
+#sed -i s/'EXTRAVERSION = -rc6'/'EXTRAVERSION ='/ "${_srcname}"/Makefile
   cd "${srcdir}/${_srcname}"
 
+  # Manjaro-ARM patches
+  # Bootsplash patches
+  patch -Np1 -i "${srcdir}/0001-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0002-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0003-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0004-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0005-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0006-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0007-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0008-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0009-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0010-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0011-bootsplash.patch"
+  patch -Np1 -i "${srcdir}/0012-bootsplash.patch"
+  git apply -p1 < "${srcdir}/0013-bootsplash.patch"
+  
   cat "${srcdir}/config" > ./.config
 
   # add pkgrel to extraversion
