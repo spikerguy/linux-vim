@@ -4,18 +4,18 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgbase=linux-vim3
-_commit=597c549fd51aa44d335dcb9afa0f65028c3b5193
+_commit=5436999f27335fa622384fd330a419282d827028
 _srcname=Amlogic_s905-kernel-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Kernel for Khadas Vim 3"
-pkgver=5.3.0
-pkgrel=2
+pkgver=5.5.0
+pkgrel=0.6
 arch=('aarch64')
 url="https://github.com/150balbes/Amlogic_s905-kernel/tree/master"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("https://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar.gz"
+source=(h"ttps://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar.gz"
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -33,8 +33,8 @@ source=("https://github.com/150balbes/Amlogic_s905-kernel/archive/${_commit}.tar
         '0011-bootsplash.patch'
         '0012-bootsplash.patch'
         '0013-bootsplash.patch')
-md5sums=('fab5177aa6ccf1ca6a72843da1123d1e'
-         '217fb591939dbfeffad75b946b1f987d'
+md5sums=('3dcfef0493bbd2ee21a91f1b1b1be95c'
+         'd2a65463ceb55c508f1edf85abeaef5b'
          'fbb7f2695efe0c83265cad1c5e6f0a81'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -53,7 +53,7 @@ md5sums=('fab5177aa6ccf1ca6a72843da1123d1e'
          '2ead9aa2df230c83539e3ebf6b796b18')
 
 prepare() {
-#sed -i s/'EXTRAVERSION = -rc6'/'EXTRAVERSION ='/ "${_srcname}"/Makefile
+sed -i s/'EXTRAVERSION = -rc6'/'EXTRAVERSION ='/ "${_srcname}"/Makefile
   cd "${srcdir}/${_srcname}"
 
   # Manjaro-ARM patches
